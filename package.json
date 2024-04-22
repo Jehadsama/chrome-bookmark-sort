@@ -8,5 +8,8 @@
   },
   "keywords": [],
   "author": "Jehadsama",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "chrome-types": "^0.1.281"
+  }
 }
