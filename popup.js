@@ -1,11 +1,3 @@
-// Search the bookmarks when entering the search keyword.
-// Get the bookmarks and display them in the popup
-chrome.bookmarks.getTree((tree) => {
-    console.log(tree);
-    const bookmarkList = document.getElementById('bookmarkList');
-    displayBookmarks(tree[0].children, bookmarkList);
-});
-
 // Recursively display the bookmarks
 function displayBookmarks(nodes, parentNode) {
     for (const node of nodes) {
@@ -25,19 +17,11 @@ function displayBookmarks(nodes, parentNode) {
     }
 }
 
-// Add a bookmark for www.google.com
 function sortBookmark() {
-    // chrome.bookmarks.create(
-    //     {
-    //         parentId: '1',
-    //         title: 'Google',
-    //         url: 'https://www.google.com'
-    //     },
-    //     () => {
-    //         console.log('Bookmark added');
-    //         location.reload(); // Refresh the popup
-    //     }
-    // );
+    chrome.bookmarks.getTree((tree) => {
+        const bookmarkList = document.getElementById('bookmarkList');
+        displayBookmarks(tree[0].children, bookmarkList);
+    });
 }
 
 // Add click event listeners to the buttons
