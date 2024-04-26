@@ -1,24 +1,8 @@
-import { flat, group } from 'radash';
-
-
-const flatTree = (tree = []) => {
-    if (!tree.length) return [];
-
-    return flat(tree.map(({ id, parentId, title, url, children }) => (
-        [{
-            parentId,
-            id,
-            title,
-            url,
-        }, ...flatTree(children)]
-    )))
-}
-
-
-const groupBookmark = (bookmarks) => group(bookmarks, ({ parentId }) => parentId)
+import { flatTree, groupBookmark } from "./utils";
 
 const initTree = () => {
     chrome.bookmarks.getTree((tree) => {
+        console.log(tree[0].children[0]);
         let bookmarks = groupBookmark(flatTree(tree[0].children[0]));
         console.log(bookmarks);
         // ...
