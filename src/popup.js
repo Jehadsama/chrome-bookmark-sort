@@ -3,7 +3,6 @@ import { flatTree, sortBookmarks } from './utils';
 const sortTree = async () => {
   chrome.bookmarks.getTree(async (tree) => {
     let bookmarks = sortBookmarks(flatTree(tree[0].children[0].children));
-
     let parentId;
     let index = 0;
 
@@ -15,11 +14,14 @@ const sortTree = async () => {
 
       bookmark.index = index;
       index++;
+      return bookmark;
     });
 
     await Promise.all(
       bookmarks.map(({ id, index }) => chrome.bookmarks.move(id, { index }))
     );
+
+    alert('sort successfully');
   });
 };
 
