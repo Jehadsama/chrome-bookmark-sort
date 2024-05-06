@@ -1,4 +1,0 @@
-{
-  "presets": [["@babel/preset-env", { "targets": { "chrome": 124 } }]],
-  "plugins": ["@babel/plugin-proposal-class-properties"]
-}

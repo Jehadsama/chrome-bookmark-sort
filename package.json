@@ -5,23 +5,15 @@
   "main": "popup.js",
   "type": "module",
   "scripts": {
-    "build": "rollup -c",
-    "start": "rollup -c -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "Jehadsama",
   "license": "ISC",
   "devDependencies": {
-    "@babel/cli": "^7.24.1",
-    "@babel/core": "^7.24.4",
-    "@babel/preset-env": "^7.24.4",
-    "@rollup/plugin-commonjs": "^25.0.7",
-    "@rollup/plugin-node-resolve": "^15.2.3",
     "chrome-types": "^0.1.281",
     "eslint": "^9.1.1",
-    "rollup": "^4.16.4",
-    "rollup-plugin-chrome-extension": "^3.6.12"
+    "extension": "^1.4.6"
   },
   "dependencies": {
     "radash": "^12.1.0"
