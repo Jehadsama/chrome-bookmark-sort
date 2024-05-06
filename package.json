@@ -5,7 +5,9 @@
   "main": "popup.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "extension build",
+    "dev": "extension dev",
+    "start": "extension start"
   },
   "keywords": [],
   "author": "Jehadsama",
