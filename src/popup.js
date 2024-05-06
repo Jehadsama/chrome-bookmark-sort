@@ -1,15 +1,27 @@
-import { flatTree, groupBookmark } from "./utils";
+import { flatTree, sortBookmarks } from './utils';
 
-const initTree = () => {
-    chrome.bookmarks.getTree((tree) => {
-        console.log(tree[0].children[0]);
-        let bookmarks = groupBookmark(flatTree(tree[0].children[0]));
-        console.log(bookmarks);
-        // ...
+const sortTree = async () => {
+  chrome.bookmarks.getTree(async (tree) => {
+    let bookmarks = sortBookmarks(flatTree(tree[0].children[0].children));
+
+    let parentId;
+    let index = 0;
+
+    bookmarks = bookmarks.map((bookmark) => {
+      if (parentId !== bookmark.parentId) {
+        index = 0;
+        parentId = bookmark.parentId;
+      }
+
+      bookmark.index = index;
+      index++;
     });
 
-}
-
+    await Promise.all(
+      bookmarks.map(({ id, index }) => chrome.bookmarks.move(id, { index }))
+    );
+  });
+};
 
 // Add click event listeners to the buttons
-document.getElementById('sortButton').addEventListener('click', initTree);
+document.getElementById('sortButton').addEventListener('click', sortTree);
