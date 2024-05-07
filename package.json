@@ -22,8 +22,5 @@
     "eslint": "^9.1.1",
     "rollup": "^4.16.4",
     "rollup-plugin-chrome-extension": "^3.6.12"
-  },
-  "dependencies": {
-    "radash": "^12.1.0"
   }
 }

@@ -1,4 +1,9 @@
-import { flat } from 'radash';
+const flat = (lists) => {
+  return lists.reduce((acc, list2) => {
+    acc.push(...list2);
+    return acc;
+  }, []);
+};
 
 export const flatTree = (tree = []) => {
   if (!(tree?.length || 0)) {
